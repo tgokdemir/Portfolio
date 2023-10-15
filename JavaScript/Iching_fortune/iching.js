@@ -11,12 +11,25 @@ function genRandNum(num){
 const namesAndAdjectives ={
     names: ['alligator', 'fox', 'lion', 'wolf', 'deer', 'rabbit', 'machine'
     , 'robot'],
-    adjectives1: [],
-    adjectives2: []
+    adjectives1: ['beautifull','ugly','fast', 'excited','charming','irresistable', 
+        'sleeping'],
+    adjectives2: ['runner','fainter','liar','vibrant','Exquisite']
 }
 
 /* A factory function that generates random avatar name objects for 
 the user*/
 function genRandName(){
-    return {}
+    return {
+        adjective1: namesAndAdjectives.adjectives1[genRandNum(namesAndAdjectives.adjectives1.length)],
+        adjective2: namesAndAdjectives.adjectives2[genRandNum(namesAndAdjectives.adjectives2.length)],
+        name: namesAndAdjectives.names[genRandNum(namesAndAdjectives.names.length)],
+        get fullName(){
+            return `${this.adjective1}${this.adjective2}${this.name}`
+        }
+    }
 }
+
+
+const name1 =genRandName();
+
+console.log(name1.fullName);
